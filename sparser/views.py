@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Question, Choice
+from .models import Question, Choice, Route, DataPoint, NodeNode
 from django.template import loader
 from django.urls import reverse
 from django.views import generic
@@ -40,6 +40,10 @@ def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'sparser/results.html', {'question': question})
 """
+
+def route(request):
+    return render(request, 'sparser/route.html')
+    #HttpResponseRedirect(reverse('sparse:results', args=(question.id,))
 
 
 def vote(request, question_id):

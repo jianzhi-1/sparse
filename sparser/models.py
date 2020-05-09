@@ -23,3 +23,22 @@ class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
+
+class NodeNode(models.Model):
+    def __str__(self):
+        return str(self.long) + " " + str(self.lat)
+    long = models.IntegerField(default=0)
+    lat = models.IntegerField(default=0)
+
+class Route(models.Model):
+    def __str__(self):
+        return description + " , taken at " + str(self.t)
+    t = models.DateTimeField('date route taken')
+    description = models.CharField(max_length = 250)
+
+class DataPoint(models.Model):
+    def __str__(self):
+        return str(self.long) + " " + str(self.lat)
+    long = models.IntegerField(default=0)
+    lat = models.IntegerField(default=0)
+    question = models.ForeignKey(Route, on_delete=models.CASCADE)

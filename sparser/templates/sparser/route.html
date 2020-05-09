@@ -1,0 +1,14 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'sparser/route_style.css' %}">
+<script src="{% static 'sparser/route.js' %}"></script>
+<body>
+
+  <h1> Hi </h1>
+  <p> map goes in the background </p>
+  <p> this page is active, a mouseclick will trigger something </p>
+  <form action="{% url 'sparse:submitted'%}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Submit Route">
+  </form>
+</body>

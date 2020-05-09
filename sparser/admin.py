@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Choice
+from .models import Question, Choice, Route, NodeNode, DataPoint
 # Register your models here.
 
 class ChoiceInline(admin.TabularInline):
