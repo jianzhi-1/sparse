@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 1.347203, lng: 103.781975},
+          zoom: 12,
+          gestureHandling: 'cooperative'
+        });
+        var heatMapData = [
+          {location: new google.maps.LatLng(1.3471, 103.66), weight: 0.5},
+          new google.maps.LatLng(1.3471, 103.65),
+          {location: new google.maps.LatLng(1.3471, 103.676), weight: 2},
+          {location: new google.maps.LatLng(1.34724, 103.655), weight: 3},
+          {location: new google.maps.LatLng(1.3474, 103.673), weight: 2},
+          new google.maps.LatLng(1.3469, 103.653),
+          {location: new google.maps.LatLng(1.3472, 103.661), weight: 0.5},
+          {location: new google.maps.LatLng(1.3476, 103.672), weight: 3},
+          {location: new google.maps.LatLng(1.3474, 103.663), weight: 2},
+          new google.maps.LatLng(1.3476, 103.666),
+          {location: new google.maps.LatLng(1.347, 103.668), weight: 0.5},
+          new google.maps.LatLng(1.3472, 103.658),
+          {location: new google.maps.LatLng(1.3471, 103.66), weight: 2},
+          {location: new google.maps.LatLng(1.3476, 103.663), weight: 3}
+        ];
+        var heatmap = new google.maps.visualization.HeatmapLayer({
+          data: heatMapData
+        });
+        heatmap.setMap(map);
+        var drawingManager = new google.maps.drawing.DrawingManager({
+          markerOptions: {
+            editable: true,
+            draggable: true
+          }
+        });
+        drawingManager.setMap(map);
+        drawingManager.setOptions({
+          drawingControlOptions: {
+            position: google.maps.ControlPosition.BOTTOM_LEFT,
+            drawingModes: ['marker']
+          }
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLrj7JZX5mTs9O46LCuaIG2_lMndde4RI&callback=initMap&libraries=visualization,drawing"></script>
+  </body>
+</html>
