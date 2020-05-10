@@ -27,8 +27,8 @@ class Choice(models.Model):
 class NodeNode(models.Model):
     def __str__(self):
         return str(self.long) + " " + str(self.lat)
-    long = models.IntegerField(default=0)
-    lat = models.IntegerField(default=0)
+    long = models.DecimalField(default=0)
+    lat = models.DecimalField(default=0)
 
 class Route(models.Model):
     def __str__(self):
@@ -39,6 +39,6 @@ class Route(models.Model):
 class DataPoint(models.Model):
     def __str__(self):
         return str(self.long) + " " + str(self.lat)
-    long = models.IntegerField(default=0)
-    lat = models.IntegerField(default=0)
+    long = models.DecimalField(default=0)
+    lat = models.DecimalField(default=0)
     question = models.ForeignKey(Route, on_delete=models.CASCADE)
