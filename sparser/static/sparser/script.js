@@ -75,8 +75,12 @@
         });
       }
       function deleteMarkers() {
-        setMapOnAll(null);
+        for (var i = 0; i < markerlist.length; i++) {
+          markerlist[i].setMap(null);
+        }
         markerlist = [];
+        markers = [];
+        line.setPath(markers);
       }
       /**
        * A menu that lets a user delete a selected vertex of a path.
@@ -159,6 +163,7 @@
           temp = markers.indexOf(position);
           markerlist[temp].setMap(null);
           markers.splice(temp,1);
+          markerlist.splice(temp,1);
           line.setPath(markers);
           this.close();
         }
